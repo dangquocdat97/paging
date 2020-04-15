@@ -15,3 +15,6 @@ sudo apt-get install sqlite3 libdbi-dev libdbd-sqlite3 libsctp-dev
               Specify the pathname of a file to be used as the source of the at-job,  instead  of
               standard input.
 
+
+dong bo fcch
+https://inst.eecs.berkeley.edu/~ee123/sp14/lab/lab2/lab2-Time_Frequency_Part_II_GSM.html
