@@ -1,1 +1,17 @@
 https://pl4y.store/index.php/2018/08/10/gsm-base-station-with-two-osmocom-bb-compatible-phones-on-kali-rolling/
+
+# cd root
+# git clone git@..
+# autoreconf -i
+# ./configure 
+# make
+# make install 
+# ldconfig 
+
+sudo apt-get update
+sudo apt-get install sqlite3 libdbi-dev libdbd-sqlite3 libsctp-dev
+
+-f  file
+              Specify the pathname of a file to be used as the source of the at-job,  instead  of
+              standard input.
+
