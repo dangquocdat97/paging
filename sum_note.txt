@@ -1,0 +1,65 @@
+Đơn vị truyền nhỏ nhất trong gsm là burst. Có 5 loại burst tất cả:NB, FB, SB, AB, DB. Burst được đặt trong TDMA-timeslot. Hay nói cách khác, 1 burst được mang bởi 1 time-slot. 1 burst trong 1 timeslot không được đè lên burst khác, theo đó timeslot sẽ lớn hơn độ dài của 1 burst.
+ Lưu ý normal burst: Flag dùng cho TCH là 0, cho các channel khác là 1.
+
+1 time-slot = burst - period +guard-period.
+
+8 slot sẽ được gộp lại thành 1 TDMA channel. 26 TDMA channel sẽ thành 1 multifram(traffic multiframe) hoặc 51 TDMA channel(control multiframe)
+
+Đối với traffic multiframe: slot #1 đến 12 và 14 đến 24(tổng cộng 24 time slot) được dùng để mang voice
+slot thứ 13 (#12) được dùng cho SACCH của kênh TCH
+slot thứ 26 (#25) k được dùng.
+24 slots voice của multifram mang 6 blocks 20 ms digitized voice (tổng cộng 120ms voice). Đó là lý do tại sao độ dài của multiframe là 120 ms.
+
+Đối với control channel
+- slot đầu tiên (slot #0 của multiframe) là FCCH. slot tiếp theo là SCH. Cặp đôi này lặp lại 5 lần trong multiframe
+- kênh BCCH xuất hiện 1 lần trong suốt frame , nó lấy slot 2 đến 4 (3rd 4th 5th 6th)
+- Những slot còn lại dành cho common control channels hoặc CCCH(PCH và AGCH)
+- Một số kênh điều khiển, như BCCH, CCCH, SDCCH, SACCH, FACCH kéo dài 4 slots
+
+
+BTS có 1 hoặc nhiều kênh tần số (ARFCN). 1 trong những kênh tần số này được định nghĩa là tần số cơ bản (beacon frequency hoặc BCCH frequency). Timeslot đầu tiên(slot 0) ocuar tần số cơ bản TDMA được sử dụng như kênh điều khiển cơ bản(base-control channel)
+
+------------------
+1 TDMA channel tương đương với 1 kênh vật lý
+1 time-slot tương đương với 1 kênh logic-logic channel(traffic channel và control channel)
+
+như vậy 1 kênh vật lý bao gồm 8 kênh logic
+
+các kênh như FCCH, SCH, BCCH, CCCH luôn nằm ở channel 0 (C0) của TDMA frame, các slot còn lại từ 0 -7 được dùng cho TCH
+
+Downlink
+F FCCH
+S SCH
+T TCH
+B BCCH
+D SDCCH
+0   1   2   3   4    5   6   7
+F   T   D0
+S   T   D0
+B   T   D0
+B   T   D0
+B   T   D1
+B   T   D1
+C   T   D1
+C   T   D1
+C   T   D2
+C   T   D2
+F   T   D2
+S   T   D2
+C   I
+C   T
+C   T
+C   T
+C   T
+C   T
+C   T
+F
+S
+
+ MAC/RLC block trong gsm luon luon gom 23 byte
+channel request
+https://www.sharetechnote.com/html/Handbook_GSM_Message_RR_ChannelRequest.html
+ImmediateAssignment
+https://www.sharetechnote.com/html/Handbook_GSM_Message_RR_ImmediateAssignment.html
+
+??? Sau khi đồng bộ, có cần các thao tác trước như channel request hay immediate assignment không ?
